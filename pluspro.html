@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plus Messenger Update</title>
+    <title>InstaPro Update</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
         }
         
         body {
@@ -18,15 +18,15 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             padding: 20px;
         }
         
         .update-dialog {
             width: 100%;
-            max-width: 500px;
+            max-width: 400px;
             background: white;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             animation: fadeIn 0.5s ease-out;
@@ -36,20 +36,20 @@
             background: linear-gradient(to right, #3498db, #2ecc71);
             color: white;
             padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            text-align: center;
+            position: relative;
         }
         
         .app-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 20px;
             background: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .app-icon img {
@@ -61,94 +61,85 @@
         .app-info h2 {
             font-size: 22px;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
         
         .app-info p {
-            font-size: 14px;
+            font-size: 16px;
             opacity: 0.9;
         }
         
         .dialog-body {
             padding: 25px;
+            max-height: 50vh;
+            overflow-y: auto;
         }
         
-        .update-title {
-            font-size: 18px;
-            font-weight: 600;
+        .update-content {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .update-content h3 {
+            margin: 15px 0 10px;
             color: #2c3e50;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 18px;
         }
         
-        .update-title i {
-            color: #3498db;
+        .update-content ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
         }
         
-        .changelog {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-        
-        .changelog li {
-            padding: 12px 0;
-            border-bottom: 1px solid #f1f1f1;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        
-        .changelog li:last-child {
-            border-bottom: none;
+        .update-content li {
+            margin-bottom: 8px;
         }
         
         .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
             font-size: 12px;
-            padding: 4px 10px;
-            border-radius: 20px;
             font-weight: 600;
+            margin-right: 8px;
         }
         
         .badge-added {
             background: #e8f6ef;
-            color: #2ecc71;
+            color: #27ae60;
         }
         
         .badge-fixed {
             background: #fef9e7;
-            color: #f1c40f;
-        }
-        
-        .changelog-text {
-            flex: 1;
-            color: #34495e;
-            font-size: 15px;
-            line-height: 1.5;
+            color: #f39c12;
         }
         
         .dialog-footer {
             padding: 20px;
             background: #f8f9fa;
             display: flex;
-            justify-content: flex-end;
-            gap: 12px;
+            justify-content: space-between;
+            gap: 15px;
         }
         
         .btn {
-            padding: 12px 24px;
-            border-radius: 8px;
+            padding: 14px 25px;
+            border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             border: none;
-            font-size: 15px;
+            font-size: 16px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
         }
         
         .btn-secondary {
             background: #e9ecef;
-            color: #495057;
+            color: #6c757d;
         }
         
         .btn-secondary:hover {
@@ -156,12 +147,26 @@
         }
         
         .btn-primary {
-            background: #3498db;
+            background: linear-gradient(to right, #3498db, #2ecc71);
             color: white;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
         }
         
         .btn-primary:hover {
-            background: #2980b9;
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: #6c757d;
+        }
+        
+        .loading i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #3498db;
         }
         
         @keyframes fadeIn {
@@ -175,9 +180,9 @@
             }
         }
         
-        @media (max-width: 500px) {
+        @media (max-width: 480px) {
             .update-dialog {
-                border-radius: 12px;
+                border-radius: 15px;
             }
             
             .dialog-header {
@@ -185,12 +190,8 @@
             }
             
             .app-icon {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .app-info h2 {
-                font-size: 18px;
+                width: 70px;
+                height: 70px;
             }
             
             .dialog-body {
@@ -198,7 +199,13 @@
             }
             
             .btn {
-                padding: 10px 20px;
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+            
+            .dialog-footer {
+                flex-direction: column;
+                gap: 10px;
             }
         }
     </style>
@@ -207,48 +214,93 @@
     <div class="update-dialog">
         <div class="dialog-header">
             <div class="app-icon">
-                <img src="https://i.ibb.co/4gn6s3wM/Uploaded-8063565025.png" alt="Plus Messenger Icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="InstaPro Icon">
             </div>
             <div class="app-info">
-                <h2>Plus Messenger</h2>
-                <p>Version 12.00 Available</p>
+                <h2 id="dialog-title">InstaPro</h2>
+                <p>New Update Available</p>
             </div>
         </div>
         
         <div class="dialog-body">
-            <div class="update-title">
-                <i class="fas fa-rocket"></i>
-                <span>What's New in This Version</span>
+            <div id="content-container">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading update information...</p>
+                </div>
             </div>
-            
-            <ul class="changelog">
-                <li>
-                    <span class="badge badge-added">ADDED</span>
-                    <span class="changelog-text">Music On Your Profile</span>
-                </li>
-                <li>
-                    <span class="badge badge-fixed">FIXED</span>
-                    <span class="changelog-text">Some crashes</span>
-                </li>
-                <li>
-                    <span class="badge badge-fixed">FIXED</span>
-                    <span class="changelog-text">New Profile Design</span>
-                </li>
-                <li>
-                    <span class="badge badge-fixed">FIXED</span>
-                    <span class="changelog-text">Default Profile Tab</span>
-                </li>
-                <li>
-                    <span class="badge badge-fixed">FIXED</span>
-                    <span class="changelog-text">Some crashes</span>
-                </li>
-            </ul>
         </div>
         
         <div class="dialog-footer">
-            <button class="btn btn-secondary">Later</button>
-            <button class="btn btn-primary">Update Now</button>
+            <button class="btn btn-secondary" id="cancel-btn">
+                <i class="fas fa-times"></i> Cancel
+            </button>
+            <button class="btn btn-primary" id="update-btn">
+                <i class="fas fa-download"></i> Download Now
+            </button>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // JSON data (simulated response)
+            const jsonData = {
+                "show_message": true,
+                "title": "Update Your InstaPro v12.00",
+                "content_url": "https://ts-modz.github.io/wrk/pluspro.html",
+                "positive_btn": "Download Now",
+                "link": "https://PlusProApp.blogspot.com",
+                "cancelable": true
+            };
+
+            // Check if message should be shown
+            if (jsonData.show_message) {
+                // Set title
+                document.getElementById('dialog-title').textContent = jsonData.title;
+                
+                // Simulate fetching content from URL (in a real scenario, use fetch API)
+                setTimeout(() => {
+                    // This would be replaced with actual fetch from content_url
+                    const contentContainer = document.getElementById('content-container');
+                    contentContainer.innerHTML = `
+                        <div class="update-content">
+                            <h3>What's New in Version 12.00</h3>
+                            <ul>
+                                <li><span class="badge badge-added">ADDED</span> Music On Your Profile</li>
+                                <li><span class="badge badge-fixed">FIXED</span> Some crashes</li>
+                                <li><span class="badge badge-fixed">FIXED</span> New Profile Design</li>
+                                <li><span class="badge badge-fixed">FIXED</span> Default Profile Tab</li>
+                                <li><span class="badge badge-fixed">FIXED</span> Some crashes</li>
+                            </ul>
+                            <p>Update now to enjoy the latest features and improvements!</p>
+                        </div>
+                    `;
+                }, 1500);
+                
+                // Set update button text
+                const updateBtn = document.getElementById('update-btn');
+                updateBtn.innerHTML = `<i class="fas fa-download"></i> ${jsonData.positive_btn}`;
+                
+                // Handle update button click
+                updateBtn.addEventListener('click', function() {
+                    window.location.href = jsonData.link;
+                });
+                
+                // Handle cancel button
+                const cancelBtn = document.getElementById('cancel-btn');
+                if (!jsonData.cancelable) {
+                    cancelBtn.style.display = 'none';
+                }
+                
+                cancelBtn.addEventListener('click', function() {
+                    // Close the dialog or take other action
+                    alert('Update cancelled. You can update later from the app settings.');
+                });
+            } else {
+                // If show_message is false, don't display the dialog
+                document.querySelector('.update-dialog').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
