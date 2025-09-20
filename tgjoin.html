@@ -285,60 +285,10 @@
         </div>
         
         <div class="footer">
-            <a href="https://t.me/Tech_Shreyansh1" id="telegram-link" class="btn">
+            <a href="https://telegram.me/Tech_Shreyansh1" class="btn">
                 <i class="fab fa-telegram"></i> Join Channel
             </a>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const telegramLink = document.getElementById('telegram-link');
-            let appOpened = false;
-            
-            // Function to open Telegram channel
-            function openTelegramChannel() {
-                // Fallback to web URL
-                const webUrl = 'https://t.me/Tech_Shreyansh1';
-                
-                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                
-                if (isMobile) {
-                    // Create iframe to try opening the app
-                    const iframe = document.createElement('iframe');
-                    iframe.style.display = 'none';
-                    iframe.src = appUrl;
-                    document.body.appendChild(iframe);
-                    
-                    // Set timeout to fallback to web
-                    setTimeout(function() {
-                        if (!appOpened) {
-                            window.location.href = webUrl;
-                        }
-                    }, 1500);
-                    
-                    // Add event listener to detect if app was opened successfully
-                    window.addEventListener('blur', function() {
-                        appOpened = true;
-                    });
-                    
-                    // Also try direct window location as backup
-                    window.location.href = appUrl;
-                } else {
-                    // For desktop, open web version
-                    window.open(webUrl, '_blank');
-                }
-            }
-            
-            // Add click event to the button
-            telegramLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                openTelegramChannel();
-            });
-            
-            // Prevent scrolling on the document
-            document.body.style.overflow = 'hidden';
-        });
-    </script>
 </body>
 </html>
