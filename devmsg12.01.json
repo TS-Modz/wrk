@@ -1,8 +1,8 @@
 {
-  "show_message": false,
+  "show_message": true,
   "title": "Update Your Plus v12.01-Fixed",
   "content_url": "https://ts-modz.github.io/wrk/pluspro.html",
   "positive_btn": "Download Now",
   "link": "https://PlusProApp.blogspot.com",
-  "cancelable": true
+  "cancelable": false
 }
